@@ -12,12 +12,12 @@ Usage
 -----
 
 Simply provide a list of PDB identifiers, lowercase
-and one for each line, in the `pdb_list.txt` file. Then run
+and one for each line, in the `pdb_list.txt` file. Then run:
 
-   bash prepare_commands.sh > commands.txt
-   parallel --jobs 1 --progress < commands.txt
-   echo -e "pdb id\tpdb chain\tpdb residue\tpdb position\tuniprot id\tuniprot residue\tuniprot position" > pdb2uniprot.tsv
-   find out/ -type f -name '*tsv' -exec cat {} >> pdb2uniprot.tsv \;
+    bash prepare_commands.sh > commands.txt
+    parallel --jobs 1 --progress < commands.txt
+    echo -e "pdb id\tpdb chain\tpdb residue\tpdb position\tuniprot id\tuniprot residue\tuniprot position" > pdb2uniprot.tsv
+    find out/ -type f -name '*tsv' -exec cat {} >> pdb2uniprot.tsv \;
 
 The `pdb2uniprot.tsv` file should look something like this:
 
