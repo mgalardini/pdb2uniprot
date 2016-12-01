@@ -32,6 +32,11 @@ The `pdb2uniprot.tsv` file should look something like this:
     192l    A       R       8       P00720  R       8
     192l    A       I       9       P00720  I       9
 
+Acknowledgements
+------------
+
+The conversion is based on the SIFTS database (http://www.ebi.ac.uk/pdbe/docs/sifts/), to which we are very grateful
+
 Copyright
 ---------
 
