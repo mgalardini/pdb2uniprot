@@ -6,7 +6,7 @@ Retrieve PDB 2 uniprot mappings, with residue resolution
 Dependencies
 ------------
 
-* python2
+* python (either version 2 or 3)
 
 Usage
 -----

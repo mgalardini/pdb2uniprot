@@ -88,7 +88,7 @@ def parsexml_(*args, **kwargs):
 
 try:
     from generatedssuper import GeneratedsSuper
-except ImportError, exp:
+except ImportError as exp:
 
     class GeneratedsSuper(object):
         tzoff_pattern = re_.compile(r'(\+|-)((0\d|1[0-3]):[0-5]\d|14:00)$')
@@ -408,7 +408,7 @@ def showIndent(outfile, level, pretty_print=True):
 def quote_xml(inStr):
     if not inStr:
         return ''
-    s1 = (isinstance(inStr, basestring) and inStr or
+    s1 = (isinstance(inStr, str) and inStr or
           '%s' % inStr)
     s1 = s1.replace('&', '&amp;')
     s1 = s1.replace('<', '&lt;')
@@ -417,7 +417,7 @@ def quote_xml(inStr):
 
 
 def quote_attrib(inStr):
-    s1 = (isinstance(inStr, basestring) and inStr or
+    s1 = (isinstance(inStr, str) and inStr or
           '%s' % inStr)
     s1 = s1.replace('&', '&amp;')
     s1 = s1.replace('<', '&lt;')
@@ -635,7 +635,7 @@ class entry(GeneratedsSuper):
     def __init__(self, dbEvidence=None, dbEntryVersion=None, dbVersion=None, dbAccessionId=None, dbSource=None, date=None, dbCoordSys=None, RDF=None, listDB=None, entryDetail=None, entity=None, alignment=None):
         self.original_tagname_ = None
         self.dbEvidence = _cast(None, dbEvidence)
-        if isinstance(dbEntryVersion, basestring):
+        if isinstance(dbEntryVersion, str):
             initvalue_ = datetime_.datetime.strptime(dbEntryVersion, '%Y-%m-%d').date()
         else:
             initvalue_ = dbEntryVersion
@@ -643,7 +643,7 @@ class entry(GeneratedsSuper):
         self.dbVersion = _cast(None, dbVersion)
         self.dbAccessionId = _cast(None, dbAccessionId)
         self.dbSource = _cast(None, dbSource)
-        if isinstance(date, basestring):
+        if isinstance(date, str):
             initvalue_ = datetime_.datetime.strptime(date, '%Y-%m-%d').date()
         else:
             initvalue_ = date
@@ -869,7 +869,7 @@ class entry(GeneratedsSuper):
             already_processed.add('dbEntryVersion')
             try:
                 self.dbEntryVersion = self.gds_parse_date(value)
-            except ValueError, exp:
+            except ValueError as exp:
                 raise ValueError('Bad date attribute (dbEntryVersion): %s' % exp)
         value = find_attr_value_('dbVersion', node)
         if value is not None and 'dbVersion' not in already_processed:
@@ -888,7 +888,7 @@ class entry(GeneratedsSuper):
             already_processed.add('date')
             try:
                 self.date = self.gds_parse_date(value)
-            except ValueError, exp:
+            except ValueError as exp:
                 raise ValueError('Bad date attribute (date): %s' % exp)
         value = find_attr_value_('dbCoordSys', node)
         if value is not None and 'dbCoordSys' not in already_processed:
@@ -4990,7 +4990,7 @@ class blockType(GeneratedsSuper):
             already_processed.add('blockOrder')
             try:
                 self.blockOrder = int(value)
-            except ValueError, exp:
+            except ValueError as exp:
                 raise_parse_error(node, 'Bad integer attribute: %s' % exp)
     def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
         if nodeName_ == 'segment':
@@ -5347,21 +5347,21 @@ class vectorType(GeneratedsSuper):
             already_processed.add('y')
             try:
                 self.y = float(value)
-            except ValueError, exp:
+            except ValueError as exp:
                 raise ValueError('Bad float/double attribute (y): %s' % exp)
         value = find_attr_value_('x', node)
         if value is not None and 'x' not in already_processed:
             already_processed.add('x')
             try:
                 self.x = float(value)
-            except ValueError, exp:
+            except ValueError as exp:
                 raise ValueError('Bad float/double attribute (x): %s' % exp)
         value = find_attr_value_('z', node)
         if value is not None and 'z' not in already_processed:
             already_processed.add('z')
             try:
                 self.z = float(value)
-            except ValueError, exp:
+            except ValueError as exp:
                 raise ValueError('Bad float/double attribute (z): %s' % exp)
     def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
         pass
@@ -5655,7 +5655,7 @@ class max11Type(GeneratedsSuper):
             already_processed.add('coord')
             try:
                 self.coord = float(value)
-            except ValueError, exp:
+            except ValueError as exp:
                 raise ValueError('Bad float/double attribute (coord): %s' % exp)
     def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
         pass
@@ -5732,7 +5732,7 @@ class max12Type(GeneratedsSuper):
             already_processed.add('coord')
             try:
                 self.coord = float(value)
-            except ValueError, exp:
+            except ValueError as exp:
                 raise ValueError('Bad float/double attribute (coord): %s' % exp)
     def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
         pass
@@ -5809,7 +5809,7 @@ class max13Type(GeneratedsSuper):
             already_processed.add('coord')
             try:
                 self.coord = float(value)
-            except ValueError, exp:
+            except ValueError as exp:
                 raise ValueError('Bad float/double attribute (coord): %s' % exp)
     def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
         pass
@@ -5886,7 +5886,7 @@ class max21Type(GeneratedsSuper):
             already_processed.add('coord')
             try:
                 self.coord = float(value)
-            except ValueError, exp:
+            except ValueError as exp:
                 raise ValueError('Bad float/double attribute (coord): %s' % exp)
     def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
         pass
@@ -5963,7 +5963,7 @@ class max22Type(GeneratedsSuper):
             already_processed.add('coord')
             try:
                 self.coord = float(value)
-            except ValueError, exp:
+            except ValueError as exp:
                 raise ValueError('Bad float/double attribute (coord): %s' % exp)
     def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
         pass
@@ -6040,7 +6040,7 @@ class max23Type(GeneratedsSuper):
             already_processed.add('coord')
             try:
                 self.coord = float(value)
-            except ValueError, exp:
+            except ValueError as exp:
                 raise ValueError('Bad float/double attribute (coord): %s' % exp)
     def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
         pass
@@ -6117,7 +6117,7 @@ class max31Type(GeneratedsSuper):
             already_processed.add('coord')
             try:
                 self.coord = float(value)
-            except ValueError, exp:
+            except ValueError as exp:
                 raise ValueError('Bad float/double attribute (coord): %s' % exp)
     def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
         pass
@@ -6194,7 +6194,7 @@ class max32Type(GeneratedsSuper):
             already_processed.add('coord')
             try:
                 self.coord = float(value)
-            except ValueError, exp:
+            except ValueError as exp:
                 raise ValueError('Bad float/double attribute (coord): %s' % exp)
     def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
         pass
@@ -6271,7 +6271,7 @@ class max33Type(GeneratedsSuper):
             already_processed.add('coord')
             try:
                 self.coord = float(value)
-            except ValueError, exp:
+            except ValueError as exp:
                 raise ValueError('Bad float/double attribute (coord): %s' % exp)
     def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
         pass
@@ -6319,7 +6319,7 @@ Usage: python <Parser>.py [ -s ] <in_xml_file>
 
 
 def usage():
-    print USAGE_TEXT
+    print(USAGE_TEXT)
     sys.exit(1)
 
 
@@ -6375,8 +6375,12 @@ def parseEtree(inFileName, silence=False):
 
 
 def parseString(inString, silence=False):
-    from StringIO import StringIO
-    doc = parsexml_(StringIO(inString))
+    try:
+        from StringIO import StringIO
+        doc = parsexml_(StringIO(inString))
+    except ImportError:
+        from io import BytesIO
+        doc = parsexml_(BytesIO(inString.encode('utf8')))
     rootNode = doc.getroot()
     rootTag, rootClass = get_root_tag(rootNode)
     if rootClass is None:
