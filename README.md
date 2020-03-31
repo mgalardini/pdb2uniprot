@@ -1,6 +1,8 @@
 pdb2uniprot
 =========
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3735065.svg)](https://doi.org/10.5281/zenodo.3735065)
+
 Retrieve PDB 2 uniprot mappings, with residue resolution
 
 Dependencies
